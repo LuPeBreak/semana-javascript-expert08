@@ -13,7 +13,7 @@ worker.onmessage = ({ data }) => {
   if (data.status !== "done") return;
   clock.stop();
   view.updateElapsedTime(`Process took ${took.replace("ago", "")}`);
-  console.log("recebi no processo da view", data);
+  view.downloadBlobAsFile(data.buffers, data.fileName);
 };
 
 view.configureOnFileChange((file) => {
